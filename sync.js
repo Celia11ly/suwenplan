@@ -13,9 +13,13 @@ function syncToGit() {
     execSync('git add .', { stdio: 'inherit' });
     execSync('git commit -m "Auto sync from local changes"', { stdio: 'inherit' });
     execSync('git push', { stdio: 'inherit' });
-    console.log('✅ Successfully synced to GitHub!');
+    console.log('✅ Successfully synced code to GitHub Main Branch!');
+    
+    console.log('🚀 Deploying latest build to GitHub Pages...');
+    execSync('npm run deploy', { stdio: 'inherit' });
+    console.log('✅ Successfully published to GitHub Pages!');
   } catch (error) {
-    console.error('❌ Sync failed:', error.message);
+    console.error('❌ Sync or Deploy failed:', error.message);
   }
 }
 
